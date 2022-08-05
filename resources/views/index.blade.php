@@ -3,12 +3,11 @@
 @section('title','Homepage')
 
 @section('content')
+
+@include('layouts.includes.header')
   
-    <header>
-        <h1>Index</h1>      
-    </header>
-    Vista del index 
-    <footer>  
-    </footer>
+ <div id="body">table</div>
+
+ @include('layouts.includes.footer') 
 
 @endsection
