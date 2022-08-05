@@ -6,7 +6,7 @@
 
 @include('layouts.includes.header')
   
- <div id="body">table</div>
+<div id="body" class=" p-80 bg-slate-200 text-center">table</div>
 
  @include('layouts.includes.footer') 
 
