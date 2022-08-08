@@ -14,7 +14,7 @@ class IndexController extends Controller
 
         return $partidos;
 
-        return view('index');
+        return view('index',compact('partidos'));
 
     }
 }
