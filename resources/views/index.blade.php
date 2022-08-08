@@ -38,6 +38,10 @@
 
           </thead>
 
+          @foreach ($partidos as $partido)
+          <ul><li>{{$partido}}</li></ul>
+          @endforeach
+
                     <tbody>
             <tr class=" bg-teal-50">
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
