@@ -12,8 +12,6 @@ class IndexController extends Controller
 
         $partidos = partido::all();
 
-        return $partidos;
-
         return view('index',compact('partidos'));
 
     }
