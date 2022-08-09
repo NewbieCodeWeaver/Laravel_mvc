@@ -8,7 +8,7 @@
 
 <!-- Display add match form -->
 
-@include('forms.addmatch')
+@include('forms.addmatchForm')
 
 @include('layouts.includes.footer') 
 
