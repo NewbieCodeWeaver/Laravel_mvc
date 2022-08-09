@@ -38,32 +38,34 @@
 
           </thead>
 
+
                     <tbody>
+                    @foreach ($partidos as $partido)  
             <tr class=" bg-teal-50">
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{$partido->id}}</td>
               <td class=" text-base text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                Barcelona FC
+              {{$partido->equipo_local}}
               </td>
               <td class="text-base text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                Real Madrid
+              {{$partido->equipo_visitante}}
               </td>
               <td class="text-base text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                20:00
+              {{$partido->hora}}
               </td>
                             <td class="text-base text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                20/09/22
+                {{$partido->fecha}}
               </td>
                             </td>
                             <td class="text-base text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                Camp Nou
+                            {{$partido->ubicacion}}
               </td>
                             </td>
                             </td>
                             <td class="text-base text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                2-2
+                            {{$partido->resultado}}
               </td>
             </tr>
-  
+            @endforeach
   
   </table></div></div>
 
