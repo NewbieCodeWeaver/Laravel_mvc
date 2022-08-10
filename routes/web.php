@@ -18,3 +18,7 @@ Route::get('/', IndexController::class);
 
 Route::get('/nuevo-partido',[MatchController::class,'addMatch']);
 
+Route::post('/nuevo-partido',[MatchController::class,'saveMatch']);
+
+
+
