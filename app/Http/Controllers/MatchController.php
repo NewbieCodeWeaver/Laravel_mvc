@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\partido;
 
 class MatchController extends Controller
@@ -18,12 +17,14 @@ class MatchController extends Controller
 
     }
 
+    // Muestra el formulario para agregar un nuevo partido
 
     public function addMatch() {
 
         return view('addMatch');
     }
     
+  // Guarda los datos del formulario del nuevo partido
 
     public function saveMatch(Request $request) {
 
@@ -43,15 +44,21 @@ class MatchController extends Controller
     }
 
 
-    public function showMatch() {
+    public function showMatch($id) {
 
-        // showMatch action
+        $partido = $partido::find($id);
+
+        return view('showMatch');
+
+
     }
 
 
+      // Edita los datos del partido
+
     public function editMatch() {
 
-        // editMatch action
+        
     }
 
     public function updateMatch() {
