@@ -30,9 +30,8 @@ class MatchController extends Controller
 
         $partido = new partido();
 
-        $partido->equipoLocal = $request->equipoLocal;
-        $partido->equipoVisitante = $request->equipoVisitante;
-        $partido->equipoLocal = $request->equipoLocal;
+        $partido->equipo_local = $request->equipo_local;
+        $partido->equipo_visitante = $request->equipo_visitante;
         $partido->hora = $request->hora;
         $partido->ubicacion = $request->ubicacion;
         $partido->resultado = $request->resultado;
