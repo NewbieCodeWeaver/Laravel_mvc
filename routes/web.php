@@ -27,7 +27,7 @@ Route::get('clubs',[ClubController::class,'indexClub']);
 Route::get('clubs/nuevo-club',[ClubController::class,'addClub']);
 Route::post('clubs',[ClubController::class,'saveClub']);
 Route::get('clubs/{club}',[ClubController::class,'showClub']);
-Route::post('clubs/{club}/edit',[ClubController::class,'editClub']);
+Route::get('clubs/{club}/edit',[ClubController::class,'editClub']);
 Route::put('clubs/{club}',[ClubController::class,'updateClub']);
 Route::delete('clubs/{club}',[ClubController::class,'destroyClub']);
 
@@ -48,7 +48,7 @@ Route::get('partidos',[MatchController::class,'indexMatch']);
 Route::get('partidos/nuevo-partido',[MatchController::class,'addMatch']);
 Route::post('partidos/nuevo-partido',[MatchController::class,'saveMatch']);
 Route::get('partidos/{partido}',[MatchController::class,'showMatch']);
-Route::post('partidos/{partido}/edit',[MatchController::class,'editMatch']);
+Route::get('partidos/{partido}/edit',[MatchController::class,'editMatch']);
 Route::put('partidos/{partido}',[MatchController::class,'updateMatch']);
 Route::delete('partidos/{partido}',[MatchController::class,'destroyMatch']);
 
