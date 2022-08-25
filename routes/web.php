@@ -46,7 +46,7 @@ Route::delete('equipos/{equipo}',[TeamController::class,'destroyTeam']);
 
 Route::get('partidos',[MatchController::class,'indexMatch']);
 Route::get('partidos/nuevo-partido',[MatchController::class,'addMatch']);
-Route::post('partidos',[MatchController::class,'saveMatch']);
+Route::post('partidos/nuevo-partido',[MatchController::class,'saveMatch']);
 Route::get('partidos/{partido}',[MatchController::class,'showMatch']);
 Route::post('partidos/{partido}/edit',[MatchController::class,'editMatch']);
 Route::put('partidos/{partido}',[MatchController::class,'updateMatch']);
