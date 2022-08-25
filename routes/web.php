@@ -37,7 +37,7 @@ Route::get('equipos',[TeamController::class,'indexTeam']);
 Route::get('equipos/nuevo-equipo',[TeamController::class,'addTeam']);
 Route::post('equipos',[TeamController::class,'saveTeam']);
 Route::get('equipos/{equipo}',[TeamController::class,'showTeam']);
-Route::post('equipos/{equipo}/edit',[TeamController::class,'editTeam']);
+Route::get('equipos/{equipo}/edit',[TeamController::class,'editTeam']);
 Route::put('equipos/{equipo}',[TeamController::class,'updateTeam']);
 Route::delete('equipos/{equipo}',[TeamController::class,'destroyTeam']);
 
