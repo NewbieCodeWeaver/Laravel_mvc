@@ -5,13 +5,13 @@
         <label class="text-sm font-bold mb-3 block" for="equipo-local">
           Equipo local
         </label>
-        <input class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="equipo-local" type="text" value="" name="equipoLocal">
+        <input class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="equipo-local" type="text" value="" name="equipo_local">
       </div>
       <div class="mb-4">
         <label class="text-sm font-bold mb-3 block" for="equipo-visitante">
           Equipo visitante
         </label>
-        <input class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="equipo-visitante" type="text" name="equipoVisitante">
+        <input class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="equipo-visitante" type="text" name="equipo_visitante">
       </div>
       <div class="mb-4">
         <label class="text-sm font-bold mb-3 block" for="hora-partido">
