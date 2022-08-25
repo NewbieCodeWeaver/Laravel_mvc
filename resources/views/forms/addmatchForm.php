@@ -1,5 +1,6 @@
 <div class="w-full max-w-xs">
-    <form class=" px-8 pt-6 pb-8 mb-4" action="{{route(partidos.save)}}" method="POST">
+    <form class=" px-8 pt-6 pb-8 mb-4" method="POST">
+    @csrf
       <div class="mb-4">
         <label class="text-sm font-bold mb-3 block" for="equipo-local">
           Equipo local
