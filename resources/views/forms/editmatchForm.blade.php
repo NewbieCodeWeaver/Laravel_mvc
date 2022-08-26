@@ -1,6 +1,6 @@
 <div class ="p-6 mt-5  bg-teal-500"><h1 class="text-center text-xl">Editar partido</h1></div>
 <div class="bg-slate-200">
-    <form class=" px-8 pt-6 pb-8 mb-4" method="POST">
+    <form action="{{route('partido.update', $partido)}}" class=" px-8 pt-6 pb-8 mb-4" method="POST">
     @csrf
       <div class="mb-4">
         <label class="text-sm font-bold mb-3 block" for="equipo-local">

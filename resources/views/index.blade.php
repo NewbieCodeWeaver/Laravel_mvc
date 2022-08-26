@@ -65,7 +65,7 @@ Acciones
                             {{$partido->resultado}}
               </td>
               <td class=" text-base text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                <a href="">Ver</a> | <a href="partidos/{{route('partido.edit',$partido)}}/edit">Editar</a> | <a href="">Borrar</a>
+                <a href="">Ver</a> | <a href="{{route('partido.edit', $partido)}}">Editar</a> | <a href="">Borrar</a>
                 </td>
             </tr>
             
