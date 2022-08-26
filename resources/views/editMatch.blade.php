@@ -10,7 +10,7 @@
 
 <!-- Display edit match form -->
 
-@include('forms.addmatchForm')
+@include('forms.editmatchForm')
 
 </div>
 
