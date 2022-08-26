@@ -62,9 +62,22 @@ class MatchController extends Controller
      //return $partido;
     }
 
-    public function updateMatch() {
+    public function updateMatch(Request $request, partido $partido) {
 
-        // updateMatch action
+
+        $partido->equipoLocal = $request->equipoLocal;
+        $partido->equipoVisitante = $request->equipoVisitante;
+        $partido->equipoLocal = $request->equipoLocal;
+        $partido->hora = $request->hora;
+        $partido->ubicacion = $request->ubicacion;
+        $partido->resultado = $request->resultado;
+
+        $partido->save();
+
+        return redirect()->action([MatchController::class, 'indexMatch']);
+   
+
+        
     }
 
     public function destroyMatch() {
