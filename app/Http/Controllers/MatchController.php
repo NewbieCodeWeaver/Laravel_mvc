@@ -44,9 +44,7 @@ class MatchController extends Controller
     }
 
 
-    public function showMatch($id) {
-
-        $partido = $partido::find($id);
+    public function showMatch($partido) {
 
         return view('showMatch');
 
@@ -56,9 +54,10 @@ class MatchController extends Controller
 
       // Edita los datos del partido
 
-    public function editMatch(partido $partido) { 
+    public function editMatch(partido $partidos) { 
 
-        return $partido;
+
+       return view('editMatch', compact('partido'));
     }
 
     public function updateMatch() {
