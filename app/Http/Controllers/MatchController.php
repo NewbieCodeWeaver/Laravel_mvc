@@ -54,10 +54,12 @@ class MatchController extends Controller
 
       // Edita los datos del partido
 
-    public function editMatch(partido $partidos) { 
+    public function editMatch(partido $partido) { 
 
 
        return view('editMatch', compact('partido'));
+
+     //return $partido;
     }
 
     public function updateMatch() {
