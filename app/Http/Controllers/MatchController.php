@@ -30,9 +30,10 @@ class MatchController extends Controller
 
         $partido = new partido();
 
-        $partido->equipoLocal = $request->equipo_local;
-        $partido->equipoVisitante = $request->equipo_visitante;
+        $partido->equipo_local = $request->equipo_local;
+        $partido->equipo_visitante = $request->equipo_visitante;
         $partido->hora = $request->hora;
+        $partido->fecha = $request->fecha;
         $partido->ubicacion = $request->ubicacion;
         $partido->resultado = $request->resultado;
 
@@ -64,9 +65,10 @@ class MatchController extends Controller
     public function updateMatch(Request $request, partido $partido) {
 
 
-        $partido->equipoLocal = $request->equipo_local;
-        $partido->equipoVisitante = $request->equipo_visitante;
+        $partido->equipo_local = $request->equipo_local;
+        $partido->equipo_visitante = $request->equipo_visitante;
         $partido->hora = $request->hora;
+        $partido->fecha = $request->fecha;
         $partido->ubicacion = $request->ubicacion;
         $partido->resultado = $request->resultado;
 
