@@ -2,6 +2,8 @@
 <div class="bg-slate-200">
     <form action="{{route('partido.update', $partido)}}" class=" px-8 pt-6 pb-8 mb-4" method="POST">
     @csrf
+    @method('PUT')
+    
       <div class="mb-4">
         <label class="text-sm font-bold mb-3 block" for="equipo-local">
           Equipo local
