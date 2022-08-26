@@ -48,7 +48,7 @@ Route::get('partidos',[MatchController::class,'indexMatch']);
 Route::get('partidos/nuevo-partido',[MatchController::class,'addMatch']);
 Route::post('partidos/nuevo-partido',[MatchController::class,'saveMatch']);
 Route::get('partidos/{partido}',[MatchController::class,'showMatch']);
-Route::get('partidos/{partido}/edit',[MatchController::class,'editMatch']);
+Route::get('partidos/{partido}/edit',[MatchController::class,'editMatch'])->name('partido.edit');
 Route::put('partidos/{partido}',[MatchController::class,'updateMatch']);
 Route::delete('partidos/{partido}',[MatchController::class,'destroyMatch']);
 
