@@ -80,9 +80,9 @@ class MatchController extends Controller
         
     }
 
-    public function destroyMatch() {
+    public function destroyMatch(partido $partido) {
 
-        // destroyMatch action
+        $partido->delete();
     }
 
 
