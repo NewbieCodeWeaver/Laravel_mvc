@@ -83,6 +83,7 @@ class MatchController extends Controller
     public function destroyMatch(partido $partido) {
 
         $partido->delete();
+        return redirect()->action([MatchController::class, 'indexMatch']);
     }
 
 
