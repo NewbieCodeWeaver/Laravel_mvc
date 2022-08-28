@@ -17,14 +17,14 @@ class MatchController extends Controller
 
     }
 
-    // Muestra el formulario para agregar un nuevo partido
+ // Muestra el formulario para agregar un nuevo partido
 
     public function addMatch() {
 
         return view('addMatch');
     }
     
-  // Guarda los datos del formulario del nuevo partido
+ // Guarda los datos del formulario del nuevo partido
 
     public function saveMatch(Request $request) {
 
@@ -43,23 +43,26 @@ class MatchController extends Controller
 
     }
 
+ // Muestra un partido
 
     public function showMatch($partido) {
 
-        return view('showMatch');
+        return view('showMatch',compact('partidos'));
+
+        $partido = partido::find($partido);
 
 
     }
 
 
-      // Edita los datos del partido
+ // Edita los datos del partido
 
     public function editMatch(partido $partido) { 
 
 
        return view('editMatch', compact('partido'));
 
-     //return $partido;
+       
     }
 
     public function updateMatch(Request $request, partido $partido) {
@@ -80,9 +83,12 @@ class MatchController extends Controller
         
     }
 
+ // Elimina un partido
+
     public function destroyMatch(partido $partido) {
 
         $partido->delete();
+        return redirect()->action([MatchController::class, 'indexMatch']);
     }
 
 
