@@ -47,9 +47,10 @@ class MatchController extends Controller
 
     public function showMatch($partido) {
 
-        return view('showMatch',compact('partidos'));
 
         $partido = partido::find($partido);
+
+        return view('showMatch',compact('partido'));
 
 
     }
