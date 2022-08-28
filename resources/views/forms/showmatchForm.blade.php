@@ -1,6 +1,6 @@
 <div class ="p-6 mt-5  bg-teal-500"><h1 class="text-center text-xl">Ver partido</h1></div>
 <div class="bg-slate-200">
-    <form action="{{route('partido.update', $partido)}}" class=" px-8 pt-6 pb-8 mb-4" method="POST">
+    <form action="{{route('partido.show', $partido)}}" class=" px-8 pt-6 pb-8 mb-4" method="POST">
     @csrf
     @method('PUT')
     
