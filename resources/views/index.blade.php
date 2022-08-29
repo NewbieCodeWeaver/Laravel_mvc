@@ -69,7 +69,7 @@ Acciones
                             {{$partido->resultado}}
               </td>
               <td class=" text-base text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                <a href="{{route('partido.show', $partido)}}">Ver</a> | <a href="{{route('partido.edit', $partido)}}">Editar</a> | <form action="{{route('partido.destroy', $partido)}}" method="POST"> @csrf @method('DELETE')<button type="submit">Borrar</button></form>
+                <a href="{{route('partido.show', $partido)}}"><i class="fas fa-eye"></a> | <a href="{{route('partido.edit', $partido)}}"><i class="fas fa-edit"></a> | <form action="{{route('partido.destroy', $partido)}}" method="POST"> @csrf @method('DELETE')<button type="submit"><i class="fa-solid fa-eraser"></i></button></form>
                 </td>
             </tr>
             
