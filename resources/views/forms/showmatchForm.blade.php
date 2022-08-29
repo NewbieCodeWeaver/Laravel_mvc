@@ -40,5 +40,6 @@
         </label>
         <input class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="resultado-partido" value="{{$partido->resultado}}" readonly type="text" name="resultado">
       </div>
+      <a href="{{route('partido.index')}}"><input type="button" value="Volver" class="bg-blue-500 hover:bg-blue-600 pt-3 pb-3 pl-5 pr-5 text-white rounded">
     </form>
   </div>
