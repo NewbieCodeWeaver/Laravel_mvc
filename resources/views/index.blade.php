@@ -81,4 +81,4 @@ Acciones
 
  @include('layouts.includes.footer') 
 
-@endsection
+@endsections
