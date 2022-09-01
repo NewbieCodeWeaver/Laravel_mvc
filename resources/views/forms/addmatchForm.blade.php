@@ -6,25 +6,35 @@
         <label class="text-sm font-bold mb-3 block" for="equipo-local">
           Equipo local
         </label>
-        <input class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="equipo-local" type="text" value="" name="equipo_local">
+      
+        <select id="equipo-local" name="equipo_local" class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          @foreach($equipos as $equipo)
+              <option value="{{ $equipo->id }}">{{ $equipo->nombre}}</option>
+          @endforeach 
+      </select>
       </div>
       <div class="mb-4">
         <label class="text-sm font-bold mb-3 block" for="equipo-visitante">
           Equipo visitante
         </label>
-        <input class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="equipo-visitante" type="text" name="equipo_visitante">
+      
+        <select id="equipo-visitante" name="equipo_visitante" class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          @foreach($equipos as $equipo)
+              <option value="{{ $equipo->id }}">{{ $equipo->nombre}}</option>
+          @endforeach 
+      </select>
       </div>
       <div class="mb-4">
         <label class="text-sm font-bold mb-3 block" for="hora-partido">
            Hora
         </label>
-        <input class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="hora-partido" type="text" name="hora">
+        <input type="time" id="hora-partido" name="hora" class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
       </div>
       <div class="mb-4">
         <label class="text-sm font-bold mb-3 block" for="fecha">
           Fecha
         </label>
-        <input class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fecha-partido" type="text" name="fecha">
+        <input datepicker datepicker-format="yyyy-mm-dd" class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fecha-partido" type="text" name="fecha">
       </div>
       <div class="mb-4">
         <label class="text-sm font-bold mb-3 block" for="ubicacion-partido">
