@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\partido;
+use App\Models\equipo;
 
 class MatchController extends Controller
 
@@ -31,7 +32,9 @@ class MatchController extends Controller
 
     public function addMatch() {
 
-        return view('addMatch');
+        $equipos = equipo::all();
+   
+       return view('addMatch',compact('equipos'));
     }
     
  // Guarda los datos del formulario del nuevo partido
