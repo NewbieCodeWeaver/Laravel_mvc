@@ -1,6 +1,6 @@
 @extends('layouts.plantilla')
 
-@section('title','Mostrar partido')
+@section('title','Editar partido')
 
 @section('content')
 
@@ -8,9 +8,9 @@
 
 <div class="pl-80 pr-80 pt-10 pb-12">
 
-<!-- Display show match form -->
+<!-- Display edit team form -->
 
-@include('forms.showmatchForm')
+@include('forms.editteamForm')
 
 </div>
 

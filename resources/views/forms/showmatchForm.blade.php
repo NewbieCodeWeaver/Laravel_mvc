@@ -1,20 +1,20 @@
-<div class ="p-6 mt-5  bg-teal-500"><h1 class="text-center text-xl">Ver partido</h1></div>
+<div class ="p-6 mt-5  bg-gray-600"><h1 class="text-center text-xl text-white">Ver partido</h1></div>
 <div class="bg-slate-200">
-    <form action="{{route('partido.show', $partido)}}" class=" px-8 pt-6 pb-8 mb-4" method="POST">
-    @csrf
-    @method('PUT')
     
+  <div class="px-8 pt-6 pb-8 mb-4">
+    @foreach ($partidos as $partido)  
+
       <div class="mb-4">
         <label class="text-sm font-bold mb-3 block" for="equipo-local">
           Equipo local
         </label>
-        <input class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="equipo-local" type="text" value="{{$partido->equipo_local}}" readonly name="equipo_local">
+        <input class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="equipo-local" type="text" value="{{$partido->Local}}" readonly name="equipo_local">
       </div>
       <div class="mb-4">
         <label class="text-sm font-bold mb-3 block" for="equipo-visitante">
           Equipo visitante
         </label>
-        <input class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="equipo-visitante" value="{{$partido->equipo_visitante}}" type="text" readonly name="equipo_visitante">
+        <input class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="equipo-visitante" value="{{$partido->Visitante}}" type="text" readonly name="equipo_visitante">
       </div>
       <div class="mb-4">
         <label class="text-sm font-bold mb-3 block" for="hora-partido">
@@ -40,6 +40,7 @@
         </label>
         <input class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="resultado-partido" value="{{$partido->resultado}}" readonly type="text" name="resultado">
       </div>
-      <a href="{{route('partido.index')}}"><input type="button" value="Volver" class="bg-blue-500 hover:bg-blue-600 pt-3 pb-3 pl-5 pr-5 text-white rounded">
-    </form>
+      @endforeach
+      <a href="{{route('partido.index')}}"><input type="button" value="Volver" class="bg-slate-700 hover:bg-slate-800 pt-3 pb-3 pl-5 pr-5 text-white rounded">
+      </div>
   </div>

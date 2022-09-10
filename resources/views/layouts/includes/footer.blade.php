@@ -1,1 +1,1 @@
-<div id="footer" class=" bg-yellow-300 text-center p-5">footer</div></div>
+<div id="footer" class="  bg-gray-700 text-center p-5 text-white">Clubs Manager 2022</div></div>
