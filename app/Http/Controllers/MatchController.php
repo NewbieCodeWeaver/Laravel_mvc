@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\partido;
 use App\Models\equipo;
+use Carbon\Carbon;
 
 class MatchController extends Controller
 
@@ -12,34 +13,50 @@ class MatchController extends Controller
 
     public function indexMatch() {
 
-
-     // $partidos = partido::all();
-      
-
      $partidos = partido::join('equipos as equipolocal', 'partidos.equipo_local', '=', 'equipolocal.id')
      ->join('equipos as equipovisitante', 'partidos.equipo_visitante', '=', 'equipovisitante.id')
      ->select('equipolocal.nombre as Local', 'equipovisitante.nombre as Visitante', 'partidos.hora', 'partidos.fecha', 'partidos.ubicacion', 'partidos.resultado', 'partidos.id')
-     ->get();
+     ->paginate(5);
+
+     $date = Carbon::now()->toDateString();
 
 
-    return view('index',compact('partidos'));
-
-     //return $partidos;
+     return view('indexMatch',compact('partidos', 'date'));
 
     }
 
- // Muestra el formulario para agregar un nuevo partido
 
     public function addMatch() {
 
         $equipos = equipo::all();
    
-       return view('addMatch',compact('equipos'));
+        return view('addMatch',compact('equipos'));
     }
     
- // Guarda los datos del formulario del nuevo partido
 
     public function saveMatch(Request $request) {
+
+     $equipo_local_division = equipo::find($request->equipo_local);
+     $equipo_visitante_division = equipo::find($request->equipo_visitante);
+
+     $request->request->add(['equipo_local_division' => $equipo_local_division->division]);
+     $request->request->add(['equipo_visitante_division' => $equipo_visitante_division->division]);
+
+
+     // return $request;
+
+
+        $request->validate([
+
+         'equipo_local' => 'required',
+         'equipo_visitante' =>'required|different:equipo_local', 
+         'hora' =>'required', 
+         'fecha' =>'required', 
+         'ubicacion' =>'required|min:3|max:50',
+         'equipo_visitante_division'=>'same:equipo_local_division'
+         
+        ]);
+      
 
         $partido = new partido();
 
@@ -56,26 +73,36 @@ class MatchController extends Controller
 
     }
 
- // Muestra un partido
 
     public function showMatch($partido) {
 
+        $partidos = partido::join('equipos as equipolocal', 'partidos.equipo_local', '=', 'equipolocal.id')
+        ->join('equipos as equipovisitante', 'partidos.equipo_visitante', '=', 'equipovisitante.id')
+        ->select('equipolocal.nombre as Local', 'equipovisitante.nombre as Visitante', 'partidos.hora', 'partidos.fecha', 'partidos.ubicacion', 'partidos.resultado', 'partidos.id')
+        ->where('partidos.id',"=",$partido)
+        ->get();
+   
+        // return $partidos;
 
-        $partido = partido::find($partido);
+        return view('showMatch',compact('partidos'));
 
-        return view('showMatch',compact('partido'));
 
 
     }
 
 
- // Edita los datos del partido
-
     public function editMatch(partido $partido) { 
 
 
-       return view('editMatch', compact('partido'));
+      $equipos = equipo::all();
+      $partido = partido::join('equipos as equipolocal', 'partidos.equipo_local', '=', 'equipolocal.id')
+        ->join('equipos as equipovisitante', 'partidos.equipo_visitante', '=', 'equipovisitante.id')
+        ->select('equipolocal.nombre as Local', 'equipovisitante.nombre as Visitante', 'partidos.hora', 'partidos.fecha', 'partidos.ubicacion', 'partidos.resultado', 'partidos.id')
+        ->find($partido->id);
 
+       return view('editMatch', compact('partido', 'equipos'));
+
+      // return $equipos;
        
     }
 
@@ -97,7 +124,6 @@ class MatchController extends Controller
         
     }
 
- // Elimina un partido
 
     public function destroyMatch(partido $partido) {
 
