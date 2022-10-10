@@ -31,7 +31,8 @@ class ClubController extends Controller
 
       $request->validate([
 
-      'nombre' => 'required|string|min:3|max:50' 
+      'nombre' => 'required|string|min:3|max:50',
+      'localidad' => 'required|string|min:3|max:50'  
         
        ]);
 
@@ -94,4 +95,3 @@ public function updateClub(Request $request, club $club) {
 
 
 }
-
