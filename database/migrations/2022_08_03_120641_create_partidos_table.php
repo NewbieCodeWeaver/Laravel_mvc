@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
 
             $table->date('fecha');
-            $table->dateTime('hora');
+            $table->time('hora');
             $table->string('ubicacion',30);
             $table->string('resultado',30)->nullable();
 
