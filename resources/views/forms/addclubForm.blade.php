@@ -16,11 +16,15 @@
             Localidad
 
         </label>
-            <input type="text" id="localidad" name="localidad" class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-       
+            <input type="text" id="localidad" name="localidad" class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline  @error('localidad') is-invalid @enderror">
+            @error('localidad')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror 
     </div>
     <button type="submit" class="bg-red-600 hover:bg-red-800 pt-3 pb-3 pl-5 pr-5 text-white rounded mr-3">Crear club</button><a href="{{route('club.index')}}"><input type="button" value="Volver" class="bg-slate-700 hover:bg-slate-800 pt-3 pb-3 pl-5 pr-5 text-white rounded">    
   </div>
       
     </form>
   </div>
+
+
