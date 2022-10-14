@@ -13,12 +13,11 @@ class TeamController extends Controller
     
     public function indexTeam() {
 
+      $modeloEquipo = new equipo();
 
-        $equipos = equipo::join('clubs', 'equipos.club_id', '=', 'clubs.id')
-        ->select('clubs.nombre as nombreclub','clubs.id','equipos.id','equipos.nombre','equipos.entrenador','equipos.division','equipos.estadio')
-        ->paginate(5);
+      $equipos = $modeloEquipo->getAllteamsWithPagination();
    
-        return view('indexTeam',compact('equipos'));
+      return view('indexTeam',compact('equipos'));
    
    
        }
@@ -26,9 +25,11 @@ class TeamController extends Controller
 
     public function addTeam() {
 
-        $clubs = club::all();
+      $modeloClub = new club();
+      $clubs = $modeloClub->getAllClubs();
+
    
-        return view('addTeam',compact('clubs'));
+      return view('addTeam',compact('clubs'));
     }
 
 
@@ -55,30 +56,30 @@ class TeamController extends Controller
 
     public function showTeam($equipo) {
 
-     $equipos = equipo::join('clubs', 'equipos.club_id', '=', 'clubs.id')
-     ->select('equipos.nombre', 'equipos.entrenador', 'equipos.division', 'equipos.estadio', 'clubs.nombre as nombreclub')
-     ->where('equipos.id',"=",$equipo)
-     ->get();
+    $modeloEquipo = new equipo();
 
-     // return $equipo;
+    $equipos = $modeloEquipo->showTeam($equipo);
 
-     return view('showTeam',compact('equipos'));
+    return view('showTeam',compact('equipos'));
 
  }
 
     public function editTeam(equipo $equipo) { 
 
-      $clubs = club::all();
 
-      $equipos = equipo::join('clubs', 'equipos.club_id', '=', 'clubs.id')
-      ->select('equipos.id','equipos.nombre', 'equipos.entrenador', 'equipos.division', 'equipos.estadio', 'clubs.nombre as nombreclub')
-      ->find($equipo->id);
-   
+    $modeloClub = new club();
+    
+    $clubs = $modeloClub->getAllClubs();
 
-      return view('editTeam', compact('equipos', 'clubs'));
+    return view('editTeam', compact('equipo', 'clubs'));
 }
 
     public function updateTeam(Request $request, equipo $equipo) {
+
+      $request->validate([
+        'nombre' => 'required|min:3|max:50',
+    
+      ]);  
 
 
     $equipo->nombre = $request->nombre;
