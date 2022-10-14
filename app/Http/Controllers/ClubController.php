@@ -11,8 +11,9 @@ class ClubController extends Controller
     
     public function indexClub() {
 
+      $modeloclub = new club();
 
-      $clubs = club::paginate(5);
+      $clubs = $modeloclub->getAllClubs();
    
       return view('indexClub',compact('clubs'));
    
@@ -51,12 +52,11 @@ class ClubController extends Controller
 
   public function showClub($club) {
 
-     $club = club::all()
-     ->where('id',"=",$club)
-     ->first();
+    $modeloclub = new club();
 
+    $clubToShow = $modeloclub->getClub($club);
 
-     return view('showClub',compact('club'));
+     return view('showClub',compact('clubToShow'));
 
 
 
@@ -73,6 +73,14 @@ class ClubController extends Controller
 }
 
 public function updateClub(Request $request, club $club) {
+
+
+  $request->validate([
+
+    'nombre' => 'required|string|min:3|max:50',
+    'localidad' => 'required|string|min:3|max:50'  
+      
+     ]);
 
 
   $club->nombre = $request->nombre;
