@@ -11,7 +11,7 @@
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
       </div>
-      <div class="mb-4">
+      <div class="mb-10">
         <label class="text-sm font-bold mb-3 block" for="localidad">
             Localidad
 
@@ -21,10 +21,8 @@
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror 
     </div>
-    <button type="submit" class="bg-red-600 hover:bg-red-800 pt-3 pb-3 pl-5 pr-5 text-white rounded mr-3">Crear club</button><a href="{{route('club.index')}}"><input type="button" value="Volver" class="bg-slate-700 hover:bg-slate-800 pt-3 pb-3 pl-5 pr-5 text-white rounded">    
+    <button type="submit" class="bg-red-600 hover:bg-red-800 pt-3 pb-3 pl-5 pr-5 text-white rounded mr-3">Crear club</button><a href="{{route('club.index')}}"><input type="button" value="Volver" class="bg-slate-700 hover:bg-slate-800 pt-3 pb-3 pl-5 pr-5 text-white rounded cursor-pointer">    
   </div>
       
     </form>
   </div>
-
-
