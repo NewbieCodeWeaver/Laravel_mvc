@@ -13,12 +13,11 @@ class MatchController extends Controller
 
     public function indexMatch() {
 
-     $partidos = partido::join('equipos as equipolocal', 'partidos.equipo_local', '=', 'equipolocal.id')
-     ->join('equipos as equipovisitante', 'partidos.equipo_visitante', '=', 'equipovisitante.id')
-     ->select('equipolocal.nombre as Local', 'equipovisitante.nombre as Visitante', 'partidos.hora', 'partidos.fecha', 'partidos.ubicacion', 'partidos.resultado', 'partidos.id')
-     ->paginate(5);
+    $modeloPartido = new partido();
 
-     $date = Carbon::now()->toDateString();
+    $partidos = $modeloPartido->getMatchIndex();
+
+    $date = Carbon::now()->toDateString();
 
 
      return view('indexMatch',compact('partidos', 'date'));
@@ -28,7 +27,9 @@ class MatchController extends Controller
 
     public function addMatch() {
 
-        $equipos = equipo::all();
+        $modeloEquipo = new equipo();
+
+        $equipos = $modeloEquipo->getAllteams();
    
         return view('addMatch',compact('equipos'));
     }
@@ -41,15 +42,13 @@ class MatchController extends Controller
 
      $request->request->add(['equipo_local_division' => $equipo_local_division->division]);
      $request->request->add(['equipo_visitante_division' => $equipo_visitante_division->division]);
-
-
-     // return $request;
-
-
-        $request->validate([
+     
+     $request->validate([
 
          'equipo_local' => 'required',
-         'equipo_visitante' =>'required|different:equipo_local', 
+         'goles_local'=> 'nullable|integer|max:20',
+         'equipo_visitante' =>'required|different:equipo_local',
+         'goles_visitante'=> 'nullable|integer|max:20', 
          'hora' =>'required', 
          'fecha' =>'required', 
          'ubicacion' =>'required|min:3|max:50',
@@ -65,7 +64,7 @@ class MatchController extends Controller
         $partido->hora = $request->hora;
         $partido->fecha = $request->fecha;
         $partido->ubicacion = $request->ubicacion;
-        $partido->resultado = $request->resultado;
+        $partido->resultado = $request->goles_local . "  -  " . $request->goles_visitante;
 
         $partido->save();
 
@@ -74,18 +73,17 @@ class MatchController extends Controller
     }
 
 
-    public function showMatch($partido) {
+    public function showMatch(partido $partido) {
 
-        $partidos = partido::join('equipos as equipolocal', 'partidos.equipo_local', '=', 'equipolocal.id')
-        ->join('equipos as equipovisitante', 'partidos.equipo_visitante', '=', 'equipovisitante.id')
-        ->select('equipolocal.nombre as Local', 'equipovisitante.nombre as Visitante', 'partidos.hora', 'partidos.fecha', 'partidos.ubicacion', 'partidos.resultado', 'partidos.id')
-        ->where('partidos.id',"=",$partido)
-        ->get();
-   
-        // return $partidos;
+    $modeloEquipo = new equipo();
 
-        return view('showMatch',compact('partidos'));
+    $equipos = $modeloEquipo->getAllteams();    
 
+    $golesLocal = substr($partido->resultado, 0, 1);
+
+    $golesVisitante = substr($partido->resultado, -1, 1);
+
+    return view('showMatch',compact('partido','equipos', 'golesLocal','golesVisitante'));
 
 
     }
@@ -93,20 +91,33 @@ class MatchController extends Controller
 
     public function editMatch(partido $partido) { 
 
+      $modeloEquipo = new equipo();
 
-      $equipos = equipo::all();
-      $partido = partido::join('equipos as equipolocal', 'partidos.equipo_local', '=', 'equipolocal.id')
-        ->join('equipos as equipovisitante', 'partidos.equipo_visitante', '=', 'equipovisitante.id')
-        ->select('equipolocal.nombre as Local', 'equipovisitante.nombre as Visitante', 'partidos.hora', 'partidos.fecha', 'partidos.ubicacion', 'partidos.resultado', 'partidos.id')
-        ->find($partido->id);
+      $equipos = $modeloEquipo->getAllteams();
 
-       return view('editMatch', compact('partido', 'equipos'));
+      $golesLocal = substr($partido->resultado, 0, 1);
 
-      // return $equipos;
+      $golesVisitante = substr($partido->resultado, -1, 1);
+      
+
+      return view('editMatch', compact('partido', 'equipos', 'golesLocal', 'golesVisitante'));
        
     }
 
     public function updateMatch(Request $request, partido $partido) {
+
+            
+     $request->validate([
+
+        'equipo_local' => 'required',
+        'goles_local'=> 'nullable|integer|max:20',
+        'equipo_visitante' =>'required|different:equipo_local',
+        'goles_visitante'=> 'nullable|integer|max:20', 
+        'hora' =>'required', 
+        'fecha' =>'required', 
+        'ubicacion' =>'required|min:3|max:50',
+        
+       ]);
 
 
         $partido->equipo_local = $request->equipo_local;
@@ -114,7 +125,7 @@ class MatchController extends Controller
         $partido->hora = $request->hora;
         $partido->fecha = $request->fecha;
         $partido->ubicacion = $request->ubicacion;
-        $partido->resultado = $request->resultado;
+        $partido->resultado = $request->goles_local . "  -  " . $request->goles_visitante;
 
         $partido->save();
 
