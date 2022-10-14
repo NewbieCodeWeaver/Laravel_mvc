@@ -7,14 +7,14 @@
         <label class="text-sm font-bold mb-3 block" for="nombre">
           Nombre del club
         </label>
-        <input class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nombre" type="text" value="{{$club->nombre}}" readonly name="nombre">
+        {{$clubToShow->nombre}}
       </div>
-      <div class="mb-4">
+      <div class="mb-10">
         <label class="text-sm font-bold mb-3 block" for="localidad">
           Localidad
         </label>
-        <input class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="localidad" value="{{$club->localidad}}" type="text" readonly name="localidad">
+        {{$clubToShow->localidad}}
       </div>
-      <a href="{{route('club.index')}}"><input type="button" value="Volver" class="bg-slate-700 hover:bg-slate-800 pt-3 pb-3 pl-5 pr-5 text-white rounded">
+      <a href="{{route('club.index')}}"><input type="button" value="Volver" class="bg-slate-700 hover:bg-slate-800 pt-3 pb-3 pl-5 pr-5 text-white rounded cursor-pointer">
       </div>
   </div>
