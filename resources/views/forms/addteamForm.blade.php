@@ -33,7 +33,7 @@
         </label>
         <input class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="estadio" type="text" name="estadio">
       </div>
-      <div class="mb-4">
+      <div class="mb-10">
         <label class="text-sm font-bold mb-3 block" for="club">
           Club
         </label>
@@ -43,6 +43,6 @@
             @endforeach 
         </select>
       </div>
-      <button type="submit" class="bg-red-600 hover:bg-red-800 pt-3 pb-3 pl-5 pr-5 text-white rounded mr-3">Crear equipo</button><a href="{{route('equipos.index')}}"><input type="button" value="Volver" class="bg-slate-700 hover:bg-slate-800 pt-3 pb-3 pl-5 pr-5 text-white rounded">
+      <button type="submit" class="bg-red-600 hover:bg-red-800 pt-3 pb-3 pl-5 pr-5 text-white rounded mr-3">Crear equipo</button><a href="{{route('equipos.index')}}"><input type="button" value="Volver" class="bg-slate-700 hover:bg-slate-800 pt-3 pb-3 pl-5 pr-5 text-white rounded cursor-pointer">
     </form>
   </div>
