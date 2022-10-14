@@ -6,7 +6,7 @@
 
 @include('layouts.includes.header')
   
-<div id="body" class="pt-20 pb-20 pl-14 pr-14 bg-slate-200 bg-[url('../resources/imgs/fondo-campo-football.png')] bg-no-repeat bg-cover	"><div id="partidos-table">
+<div id="body" class="pt-20 pb-20 pl-14 pr-14 bg-slate-200 bg-[url('{{url('images/fondo-campo-football.png');}}')] bg-no-repeat bg-cover	"><div id="partidos-table">
   
   <div class="float-right w-33 rounded-lg bg-red-600 mb-8 p-4 text-center text-base font-semibold text-red-50 hover:bg-red-800"><a href="{{route('partido.add')}}"> <i class="fa-solid fa-circle-plus"></i></i><span class="pl-2">AÑADIR PARTIDO</span></a></div>
   <table class=" w-full">
