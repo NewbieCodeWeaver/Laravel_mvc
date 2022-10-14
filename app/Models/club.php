@@ -17,4 +17,27 @@ class club extends Model
 
         return $this->hasMany('App\Models\Equipos');
     }
+
+    public function getClub($club) {
+
+
+        $club = club::all()
+        ->where('id', "=", $club)
+        ->first();
+
+        return $club;
+
+    }
+
+
+    public function getAllClubs() {
+    
+        $clubs = club::paginate(5);
+
+            return $clubs;
+
+
+    }
+
+
 }
