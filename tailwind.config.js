@@ -6,9 +6,15 @@ module.exports = {
     "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+
+      backgroundImage: {
+        'player': "url('/resources/imgs/player.png')",
+
+    },
   },
   plugins: [
     require('flowbite/plugin')
   ],
+}
 }
