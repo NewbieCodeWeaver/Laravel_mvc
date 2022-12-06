@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <title>@yield('title')</title>
     <meta charset="UTF-8">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-    <script src="https://unpkg.com/flowbite@1.4.7/dist/datepicker.js"></script>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <title>@yield('title')</title>
+</head>
 
+@include('layouts.includes.header')
 
-<body>
-    @yield('content')
-</body>
+<script src="{{ URL::asset('js/menu.js') }}"></script>
+
+@yield('content')
+
+@include('layouts.includes.footer') 
+
 </html>
