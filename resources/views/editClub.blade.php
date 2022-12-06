@@ -4,16 +4,10 @@
 
 @section('content')
 
-@include('layouts.includes.header')
-
-<div class="pl-80 pr-80 pt-10 pb-12">
-
-<!-- Display edit club form -->
-
-@include('forms.editclubForm')
-
-</div>
-
-@include('layouts.includes.footer') 
+    <div id="body" class="grid place-items-center pt-20 pb-20 pl-14 pr-14">
+        <div class="w-4/5">
+            @include('forms.editclubForm')
+        </div>
+    </div>
 
 @endsection

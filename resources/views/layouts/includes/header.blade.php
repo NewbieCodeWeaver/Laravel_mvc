@@ -17,18 +17,18 @@
   <nav class=" h-16 bg-red-600">
     <div class="text-white text-base hidden lg:flex flex-col relative lg:static lg:flex-row lg:justify-evenly pt-28 pb-10 lg:p-0 lg:h-16 bg-red-600" id="responsive-menu">
       <div class="text-center self-center lg:text-right">
-        <a href="#responsive-header" class="block lg:inline-block mt-5 lg:mt-0 lg:px-3">
+        <a href="{{route('index')}}" class="block lg:inline-block mt-5 lg:mt-0 lg:px-3">
           Home
         </a>  
-        <a href="#responsive-header" class="block lg:inline-block mt-5 lg:mt-0 lg:px-3">
+        <a href="{{route('club.index')}}" class="block lg:inline-block mt-5 lg:mt-0 lg:px-3">
           Clubs
         </a>
       </div>  
       <div class="text-center self-center lg:text-left">
-        <a href="#responsive-header" class="block lg:inline-block mt-5 lg:mt-0 lg:px-3">
+        <a href="{{route('equipos.index')}}" class="block lg:inline-block mt-5 lg:mt-0 lg:px-3">
           Equipos
         </a>  
-        <a href="#responsive-header" class="block lg:inline-block mt-5 lg:mt-0 lg:px-3">
+        <a href="{{route('partido.index')}}" class="block lg:inline-block mt-5 lg:mt-0 lg:px-3">
           Partidos
         </a>
       </div>
