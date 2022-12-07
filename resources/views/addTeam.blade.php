@@ -1,19 +1,11 @@
 @extends('layouts.plantilla')
 
-@section('title','Nuevo equipo')
+@section('title','Nuevo equipo - Clubs Manager')
 
 @section('content')
-
-@include('layouts.includes.header')
-
-<div class="pl-80 pr-80 pt-10 pb-12">
-
-<!-- Display add team form -->
-
-@include('forms.addteamForm')
-
-</div>
-
-@include('layouts.includes.footer') 
-
+    <div id="body" class="grid place-items-center py-12 px-6 lg:py-20 lg:px-14">
+        <div class="w-full lg:w-4/5">
+            @include('forms.addteamForm')
+        </div>
+    </div>
 @endsection

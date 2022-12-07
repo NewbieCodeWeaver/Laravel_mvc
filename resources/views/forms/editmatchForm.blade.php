@@ -63,7 +63,7 @@
         <label class="text-sm font-bold mb-3 block" for="fecha">
           Fecha
         </label>
-        <input class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fecha-partido" value="{{$partido->fecha}}" type="text" name="fecha">
+        <input datepicker datepicker-format="yyyy-mm-dd" class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fecha-partido" value="{{$partido->fecha}}" type="text" name="fecha">
         @error('fecha')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
