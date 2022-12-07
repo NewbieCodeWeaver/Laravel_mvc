@@ -1,19 +1,12 @@
 @extends('layouts.plantilla')
 
-@section('title','Editar partido')
+@section('title','Editar partido - Clubs Manager')
 
 @section('content')
-
-@include('layouts.includes.header')
-
-<div class="pl-80 pr-80 pt-10 pb-12">
-
-<!-- Display edit match form -->
-
-@include('forms.editmatchForm')
-
-</div>
-
-@include('layouts.includes.footer') 
-
+    <script src="https://unpkg.com/flowbite@1.5.4/dist/datepicker.js"></script>
+    <div id="body" class="grid place-items-center py-12 px-6 lg:py-20 lg:px-14">
+        <div class="w-full lg:w-4/5">
+            @include('forms.editmatchForm')
+        </div>
+    </div>
 @endsection

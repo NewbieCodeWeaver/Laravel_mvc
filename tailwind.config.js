@@ -4,11 +4,19 @@ module.exports = {
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
     "./resources/**/*.vue",
+    "./node_modules/flowbite/**/*.js",
   ],
   theme: {
-    extend: {},
+    extend: {
+
+      backgroundImage: {
+        'player': "url('/resources/imgs/player.png')",
+        'stadium': "url('/resources/imgs/stadium.png')",
+
+    },
   },
   plugins: [
     require('flowbite/plugin')
   ],
+}
 }

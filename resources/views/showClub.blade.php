@@ -1,19 +1,14 @@
+
 @extends('layouts.plantilla')
 
 @section('title','Mostrar club')
 
 @section('content')
 
-@include('layouts.includes.header')
-
-<div class="pl-80 pr-80 pt-10 pb-12">
-
-<!-- Display show club form -->
-
-@include('forms.showclubForm')
-
-</div>
-
-@include('layouts.includes.footer') 
+    <div id="body" class="grid place-items-center py-12 px-6 lg:py-20 lg:px-14">
+        <div class="w-4/5">
+            @include('forms.showclubForm')
+        </div>
+    </div>
 
 @endsection
