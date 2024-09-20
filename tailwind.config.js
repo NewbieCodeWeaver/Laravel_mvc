@@ -6,17 +6,17 @@ module.exports = {
     "./resources/**/*.vue",
     "./node_modules/flowbite/**/*.js",
   ],
-  theme: {
-    extend: {
+  //   theme: {
+  //     extend: {
 
-      backgroundImage: {
-        'player': "url('/resources/imgs/player.png')",
-        'stadium': "url('/resources/imgs/stadium.png')",
+  //       backgroundImage: {
+  //         'player': "url('/resources/imgs/player.png')",
+  //         'stadium': "url('/resources/imgs/stadium.png')",
 
-    },
-  },
-  plugins: [
-    require('flowbite/plugin')
-  ],
-}
+  //     },
+  //   },
+  //   plugins: [
+  //     require('flowbite/plugin')
+  //   ],
+  // }
 }

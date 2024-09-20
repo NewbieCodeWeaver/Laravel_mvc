@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,700;1,400&display=swap');
+
+html {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.hero-bg {
+    background-image: url('http://[::1]:5174/resources/imgs/player.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: black;
+}
+
+
+.hero {
+    height: calc(100vh - 176px);
+    background: rgb(173, 173, 173);
+    background: linear-gradient(0deg, rgba(173, 173, 173, 1) 0%, rgba(163, 161, 161, 1) 100%);
+}
+
+
+.inner-container {
+    width: 300px;
+}
+
+@media (min-width: 640px) {
+    .inner-container {
+        width: 500px;
+    }
+}
+
+@media (min-width: 768px) {
+    .inner-container {
+        width: 630px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .inner-container {
+        width: 930px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .inner-container {
+        width: 1200px;
+    }
+}
+
+@media (min-width: 1536px) {
+    .inner-container {
+        width: 1400px;
+    }
+}
+
+@media (min-width: 1820px) {
+    .inner-container {
+        width: 1600px;
+    }
+}
