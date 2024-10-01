@@ -9,10 +9,22 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#dc2626',
-        secondary: '#00294d',
-      }
+        primary: {
+          DEFAULT: '#dc2626',
+          hover: '#b91c1c', // Color de hover para primary
+        },
+        secondary: {
+          DEFAULT: '#00294d',
+          hover: '#001f3a', // Color de hover para secondary
+        },
+      },
 
+    },
+  },
+  variants: {
+    extend: {
+      backgroundColor: ['hover'],
+      textColor: ['hover'],
     },
   },
   plugins: [
