@@ -9,7 +9,7 @@
             <h1 class="text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl text-white text-center md:text-left pt-10 md:pt-0">
                 Gestiona todos tus clubes</br> y partidos en un sólo sitio
             </h1>
-            <div class="rounded-lg bg-primary p-4 text-sm md:text-base lg:text-lg text-center font-semibold text-red-50 hover:bg-red-700">
+            <div class="rounded-lg bg-primary hover:bg-primary-hover p-4 text-sm md:text-base lg:text-lg text-center font-semibold text-red-50">
                 <a href="{{route('partido.index')}}">
                     <span class="uppercase">
                         ver partidos
