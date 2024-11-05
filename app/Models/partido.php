@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class partido extends Model
+class Partido extends Model
 {
     use HasFactory;
 
@@ -19,32 +20,65 @@ class partido extends Model
     }
 
 
-    public function getMatchIndex()
+    public function getAllMatches()
     {
 
-
-        $partidos = partido::join('equipos as equipolocal', 'partidos.equipo_local', '=', 'equipolocal.id')
+        $partidos = Partido::join('equipos as equipolocal', 'partidos.equipo_local', '=', 'equipolocal.id')
             ->join('equipos as equipovisitante', 'partidos.equipo_visitante', '=', 'equipovisitante.id')
-            ->select('equipolocal.nombre as Local', 'equipovisitante.nombre as Visitante', 'partidos.hora', 'partidos.fecha', 'partidos.ubicacion', 'partidos.resultado', 'partidos.id')
+            ->select('equipolocal.nombre as local', 'equipovisitante.nombre as visitante', 'partidos.*')
             ->orderBy('fecha', 'desc')
-            ->paginate(10);
+            ->paginate(5);
 
-
-        return $partidos;
+        if ($partidos) return $partidos;
     }
 
 
-    public function getPartido($partido)
+    public function getMatchDetails($partido)
+    {
+        $partidos = Partido::join('equipos as equipolocal', 'partidos.equipo_local', '=', 'equipolocal.id')
+            ->join('equipos as equipovisitante', 'partidos.equipo_visitante', '=', 'equipovisitante.id')
+            ->join('clubs as clublocal', 'equipolocal.club_id', '=', 'clublocal.id')
+            ->join('clubs as clubvisitante', 'equipovisitante.club_id', '=', 'clubvisitante.id')
+            ->select(
+                'equipolocal.nombre as local',
+                'equipovisitante.nombre as visitante',
+                'partidos.hora',
+                'partidos.fecha',
+                'partidos.ubicacion',
+                'partidos.id',
+                'clublocal.foto_perfil as localClubImg',
+                'clubvisitante.foto_perfil as visitanteClubImg'
+            )
+            ->where('partidos.id', '=', $partido)
+            ->first();
+
+        if ($partidos) return $partidos;
+    }
+
+    public function getPendingMatches()
     {
 
+        $currentDate = Carbon::now()->format('d-m-y');
+        $currentTime = Carbon::now()->format('H:i:s');
 
-        $partidos = partido::join('equipos as equipolocal', 'partidos.equipo_local', '=', 'equipolocal.id')
+        $partidos = Partido::join('equipos as equipolocal', 'partidos.equipo_local', '=', 'equipolocal.id')
             ->join('equipos as equipovisitante', 'partidos.equipo_visitante', '=', 'equipovisitante.id')
-            ->select('equipolocal.nombre as Local', 'equipovisitante.nombre as Visitante', 'partidos.hora', 'partidos.fecha', 'partidos.ubicacion', 'partidos.resultado', 'partidos.id')
-            ->where('partidos.id', "=", $partido)
-            ->get();
+            ->select('equipolocal.nombre as local', 'equipovisitante.nombre as visitante', 'partidos.*')
+            ->where(function ($query) use ($currentDate, $currentTime) {
+                $query->whereRaw("STR_TO_DATE(fecha, '%d-%m-%y') > STR_TO_DATE(?, '%d-%m-%y')", [$currentDate])
+                    ->orWhere(function ($query) use ($currentDate, $currentTime) {
+                        $query->whereRaw("STR_TO_DATE(fecha, '%d-%m-%y') = STR_TO_DATE(?, '%d-%m-%y')", [$currentDate])
+                            ->whereRaw("STR_TO_DATE(hora, '%H:%i') > STR_TO_DATE(?, '%H:%i')", [$currentTime]);
+                    });
+            });
 
+        if ($partidos) return $partidos->get();
+    }
 
-        return $partidos;
+    public function countMatches()
+    {
+        $numeroPartidos = Partido::all()->count();
+
+        if ($numeroPartidos) return $numeroPartidos;
     }
 }

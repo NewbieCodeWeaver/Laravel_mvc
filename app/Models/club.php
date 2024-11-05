@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class club extends Model
+class Club extends Model
 {
     use HasFactory;
 
@@ -18,26 +18,20 @@ class club extends Model
         return $this->hasMany('App\Models\Equipos');
     }
 
-    public function getClub($club) {
 
+    public function getAllClubs()
+    {
 
-        $club = club::all()
-        ->where('id', "=", $club)
-        ->first();
+        $clubs = Club::paginate(5);
 
-        return $club;
-
+        if ($clubs) return $clubs;
     }
 
+    public function getClubsImg()
+    {
 
-    public function getAllClubs() {
-    
-        $clubs = club::paginate(5);
+        $clubsImg = Club::pluck('foto_perfil');
 
-            return $clubs;
-
-
+        if ($clubsImg) return $clubsImg;
     }
-
-
 }
