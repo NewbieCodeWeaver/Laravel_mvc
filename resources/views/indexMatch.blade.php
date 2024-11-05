@@ -38,7 +38,20 @@
       </thead>
 
       <tbody class="tbody-matches overflow-hidden">
+
+
+        @if($partidos->isEmpty())
+
+        <tr class="bg-teal-50 hover:bg-slate-100 border-b border-solid border-slate-60 cursor-pointer">
+          <td colspan="11" class="text-center py-10 text-lg">No existen partidos</td>
+        </tr>
+
+
+        @else
+
         @foreach ($partidos as $partido)
+
+
         <tr class="bg-teal-50 hover:bg-slate-100 border-b border-solid border-slate-60 cursor-pointer">
           <td class="text-sm md:text-base text-gray-900 font-light whitespace-nowrap flex justify-center hidden md:table-cell px-3 py-5">
             <a href="{{ route('partido.show', $partido) }}" class="block w-full h-full">
@@ -47,7 +60,7 @@
           </td>
           <td class="text-sm md:text-base text-gray-900 font-light whitespace-nowrap px-3 py-5">
             <a href="{{ route('partido.show', $partido) }}" class="block w-full h-full">
-              <strong>{{$partido->Local}} - {{$partido->Visitante}}</strong>
+              <strong>{{$partido->local}} - {{$partido->visitante}}</strong>
             </a>
           </td>
           <td class="text-sm md:text-base text-gray-900 font-light whitespace-nowrap hidden md:table-cell px-3 py-5">
@@ -74,7 +87,7 @@
               @if ($currentDate < $partido->fecha)
                 <span class="pending">Pendiente</span>
                 @else
-                {{$partido->resultado}}
+                {{$partido->goles_local}} - {{$partido->goles_visitante}}
                 @endif
             </a>
           </td>
@@ -94,6 +107,8 @@
         </tr>
 
         @endforeach
+
+        @endif
 
       </tbody>
     </table>

@@ -14,11 +14,12 @@
 
 @include('layouts.includes.header')
 
-<script src="{{ URL::asset('js/menu.js') }}"></script>
 
 <div class="h-fit">
     @yield('content')
 </div>
+
+<script src="{{ URL::asset('js/main.js') }}"></script>
 
 @include('layouts.includes.footer')
 
