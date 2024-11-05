@@ -27,11 +27,11 @@
         <span class="text-white text-xl opacity-50 uppercase">Goles</span>
       </div>
       <div class="flex flex-col justify-center items-center w-[250px] h-[250px] bg-gray-500 gap-3">
-        <h3 class="text-white text-5xl font-medium">@if($bestPlayer) {{ $bestPlayer }} @else ? @endif</h3>
+        <h3 class="text-white text-5xl font-medium text-center">@if($bestPlayer) {{ $bestPlayer }} @else ? @endif</h3>
         <span class="text-white text-xl opacity-50 uppercase">Mejor jugador</span>
       </div>
       <div class="flex flex-col justify-center items-center w-[250px] h-[250px] bg-gray-500 gap-3">
-        <h3 class="text-white text-5xl font-medium">@if($worstPlayer) {{ $worstPlayer }} @else ? @endif</h3>
+        <h3 class="text-white text-5xl font-medium text-center">@if($worstPlayer) {{ $worstPlayer }} @else ? @endif</h3>
         <span class="text-white text-xl opacity-50 uppercase">Peor jugador</span>
       </div>
     </div>
