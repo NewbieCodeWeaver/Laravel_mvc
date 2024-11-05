@@ -36,12 +36,19 @@ html {
 }
 
 main {
+    min-height: calc(100vh - 240px);
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4rem
+    gap: 4rem;
 }
+
+main.homepage {
+    gap: 0rem;
+}
+
+/* height: calc(100vh - 240px); */
 
 #options-menu~ul {
     padding: 1.5rem;
@@ -99,6 +106,16 @@ main {
 @media (min-width: 1820px) {
     .inner-container {
         width: 1600px;
+    }
+}
+
+.data-container {
+    width: 325px;
+}
+
+@media (min-width: 768px) {
+    .data-container {
+        width: 760px;
     }
 }
 
