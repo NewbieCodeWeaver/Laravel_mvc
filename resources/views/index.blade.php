@@ -127,10 +127,11 @@
             <div class="flex flex-col md:flex-row justify-center w-full gap-12">
                 <div class="w-full md:w-1/2">
                     <h2 class="text-4xl mb-5 text-white">Acerca de Clubs Manager</h2>
-                    <p class="text-white">Clubs Manager es una aplciacion web que te permite controlar desde un solo lugar todos tus equipos, jugadores y partidos.
-                        Crea, edita y borra cada uno de ellos o añadelos fácilmente a la lista. La app puede utilizarse en cualquier dispositivo
+                    <p class="text-white">Clubs Manager es una aplicación web que te permite controlar desde un sólo lugar todos tus equipos, jugadores y partidos.
+                        Crea, edita y borra cada uno de ellos o añádelos fácilmente a la lista. La app puede utilizarse en cualquier dispositivo
                         gracias a su <span class="font-bold">diseño responsive</span>.
-                    <p class="text-white pt-5"> Además de esto, podrás obtener <a class="underline" href="{{route('estadisticas.index')}}">estadísticas actualizadas<a> con el número de partidos disputados, el número de goles obtenidos así como el mejor y peor jugador.</p>
+                    <p class="text-white pt-5"> Además de esto, podrás obtener <a class="underline" href="{{route('estadisticas.index')}}">estadísticas actualizadas<a> con el número de partidos disputados,
+                                el número de goles obtenidos así como el mejor y peor jugador.</p>
                     </p>
                     <div class="inline-block rounded-lg bg-secondary hover:bg-secondary-hover p-4 text-sm md:text-base lg:text-lg text-center font-semibold text-red-50 mt-8">
                         <a href="{{route('club.index')}}">
