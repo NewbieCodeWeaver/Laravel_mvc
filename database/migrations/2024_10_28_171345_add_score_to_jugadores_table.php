@@ -13,13 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('clubs', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre', 45);
-            $table->string('localidad', 45);
-            $table->string('presidente', 45);
-            $table->string('foto_perfil')->nullable();
-            $table->timestamps();
+        Schema::table('jugadores', function (Blueprint $table) {
+            $table->tinyInteger('score')->nullable();
         });
     }
 
@@ -30,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clubs');
+        Schema::table('jugadores', function (Blueprint $table) {
+            $table->dropColumn('score');
+        });
     }
 };

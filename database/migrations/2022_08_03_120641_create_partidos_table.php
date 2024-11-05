@@ -18,22 +18,22 @@ return new class extends Migration
 
             $table->date('fecha');
             $table->time('hora');
-            $table->string('ubicacion',30);
-            $table->string('resultado',30)->nullable();
+            $table->string('ubicacion', 30);
+            $table->string('resultado', 30)->nullable();
 
             $table->unsignedBigInteger('equipo_local')->nullable();
             $table->foreign('equipo_local')
-            ->references('id')
-            ->on('equipos')
-            ->onDelete('set null')
-            ->onUpdate('set null');
+                ->references('id')
+                ->on('equipos')
+                ->onDelete('set null')
+                ->onUpdate('set null');
 
             $table->unsignedBigInteger('equipo_visitante')->nullable();
             $table->foreign('equipo_visitante')
-            ->references('id')
-            ->on('equipos')
-            ->onDelete('set null')
-            ->onUpdate('set null');
+                ->references('id')
+                ->on('equipos')
+                ->onDelete('set null')
+                ->onUpdate('set null');
 
             $table->timestamps();
         });
