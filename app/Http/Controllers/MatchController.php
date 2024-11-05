@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\partido;
-use App\Models\equipo;
+use App\Models\Partido;
+use App\Models\Equipo;
 use Carbon\Carbon;
 
 class MatchController extends Controller
@@ -14,27 +14,23 @@ class MatchController extends Controller
     public function indexMatch()
     {
 
-        $modeloPartido = new partido();
+        $modeloPartido = new Partido();
 
-        $partidos = $modeloPartido->getMatchIndex();
-
-        $modeloEquipo = new equipo();
-
-        $equipos = $modeloEquipo->getAllteams();
+        $partidos = $modeloPartido->getAllMatches();
 
         $currentDate = Carbon::now()->toDateString();
 
 
-        return view('indexMatch', compact('partidos', 'equipos', 'currentDate'));
+        return view('indexMatch', compact('partidos', 'currentDate'));
     }
 
 
     public function addMatch()
     {
 
-        $modeloEquipo = new equipo();
+        $modeloEquipo = new Equipo();
 
-        $equipos = $modeloEquipo->getAllteams();
+        $equipos = $modeloEquipo->getAllTeams();
 
         return view('addMatch', compact('equipos'));
     }
@@ -43,12 +39,13 @@ class MatchController extends Controller
     public function saveMatch(Request $request)
     {
         $request->validate([
-            'equipo_local' => 'required',
+            'equipo_local' => 'required|different:equipo_visitante',
             'equipo_visitante' => 'required|different:equipo_local',
-            'goles_visitante' => 'nullable|integer|max:20',
+            'goles_local' => 'nullable|integer|between:0,99',
+            'goles_visitante' => 'nullable|integer|between:0,99',
             'hora' => 'required',
             'fecha' => 'required',
-            'ubicacion' => 'required|min:3|max:50',
+            'ubicacion' => 'required|min:3|max:30',
             'equipo_visitante_division' => 'same:equipo_local_division'
         ]);
 
@@ -61,62 +58,50 @@ class MatchController extends Controller
         $partido->hora = $hora;
         $partido->fecha = $fecha;
         $partido->ubicacion = $request->ubicacion;
-        $partido->resultado = $request->goles_local . "  -  " . $request->goles_visitante;
+        $partido->goles_local = $request->goles_local;
+        $partido->goles_visitante = $request->goles_visitante;
 
         $partido->save();
 
-        if ($request->ajax()) {
-            return response()->json(['success' => true, 'partido' => $partido]);
-        } else {
-            return redirect()->route('index')->with('success', 'Partido agregado exitosamente');
-        }
+        return redirect()->route('index')->with('success', 'Partido agregado exitosamente');
     }
 
 
 
-    public function showMatch(partido $partido)
+    public function showMatch(Partido $partido)
     {
 
-        $modeloEquipo = new equipo();
+        $modelopartido = new Partido();
+        $matchDetails = $modelopartido->getMatchDetails($partido->id);
 
-        $equipos = $modeloEquipo->getAllteams();
-
-        $golesLocal = substr($partido->resultado, 0, 1);
-
-        $golesVisitante = substr($partido->resultado, -1, 1);
-
-        return view('showMatch', compact('partido', 'equipos', 'golesLocal', 'golesVisitante'));
+        return view('showMatch', compact('partido', 'matchDetails'));
     }
 
 
-    public function editMatch(partido $partido)
+    public function editMatch(Partido $partido)
     {
 
-        $modeloEquipo = new equipo();
+        $modeloEquipo = new Equipo();
 
-        $equipos = $modeloEquipo->getAllteams();
+        $equipos = $modeloEquipo->getAllTeams();
 
-        $golesLocal = substr($partido->resultado, 0, 1);
-
-        $golesVisitante = substr($partido->resultado, -1, 1);
-
-
-        return view('editMatch', compact('partido', 'equipos', 'golesLocal', 'golesVisitante'));
+        return view('editMatch', compact('partido', 'equipos'));
     }
 
-    public function updateMatch(Request $request, partido $partido)
+    public function updateMatch(Request $request, Partido $partido)
     {
 
 
         $request->validate([
 
-            'equipo_local' => 'required',
-            'goles_local' => 'nullable|integer|max:20',
+            'equipo_local' => 'required|different:equipo_visitante',
             'equipo_visitante' => 'required|different:equipo_local',
-            'goles_visitante' => 'nullable|integer|max:20',
+            'goles_local' => 'nullable|integer|between:0,99',
+            'goles_visitante' => 'nullable|integer|between:0,99',
             'hora' => 'required',
             'fecha' => 'required',
-            'ubicacion' => 'required|min:3|max:50',
+            'ubicacion' => 'required|min:3|max:30',
+            'equipo_visitante_division' => 'same:equipo_local_division'
 
         ]);
 
@@ -128,7 +113,9 @@ class MatchController extends Controller
         $partido->hora = $hora;
         $partido->fecha = $fecha;
         $partido->ubicacion = $request->ubicacion;
-        $partido->resultado = $request->goles_local . "  -  " . $request->goles_visitante;
+        $partido->goles_local = $request->goles_local;
+        $partido->goles_visitante = $request->goles_visitante;
+
 
         $partido->save();
 
@@ -136,7 +123,7 @@ class MatchController extends Controller
     }
 
 
-    public function destroyMatch(partido $partido)
+    public function destroyMatch(Partido $partido)
     {
 
         $partido->delete();

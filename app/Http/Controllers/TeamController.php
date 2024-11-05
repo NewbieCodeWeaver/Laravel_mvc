@@ -4,82 +4,84 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\equipo;
+use App\Models\Equipo;
 
-use App\Models\club;
+use App\Models\Club;
 
 class TeamController extends Controller
 {
-    
-    public function indexTeam() {
 
-      $modeloEquipo = new equipo();
+  public function indexTeam()
+  {
 
-      $equipos = $modeloEquipo->getAllteamsWithPagination();
-   
-      return view('indexTeam',compact('equipos'));
-   
-   
-       }
+    $modeloEquipo = new Equipo();
 
+    $equipos = $modeloEquipo->getAllTeams();
 
-    public function addTeam() {
-
-      $modeloClub = new club();
-      $clubs = $modeloClub->getAllClubs();
-
-   
-      return view('addTeam',compact('clubs'));
-    }
-
-
-    public function saveTeam(Request $request) {
-
-      $request->validate([
-        'nombre' => 'required|min:3|max:50',
-    
-      ]);
-
-      $equipo = new equipo();
-
-      $equipo->nombre = $request->nombre;
-      $equipo->entrenador = $request->entrenador;
-      $equipo->division = $request->division;
-      $equipo->estadio = $request->estadio;
-      $equipo->club_id = $request->club;
-
-      $equipo->save();
-
-      return redirect()->action([TeamController::class, 'indexTeam']);
-
+    return view('indexTeam', compact('equipos'));
   }
 
-    public function showTeam($equipo) {
 
-    $modeloEquipo = new equipo();
+  public function addTeam()
+  {
 
-    $equipos = $modeloEquipo->showTeam($equipo);
-
-    return view('showTeam',compact('equipos'));
-
- }
-
-    public function editTeam(equipo $equipo) { 
+    $modeloClub = new Club();
+    $clubs = $modeloClub->getAllClubs();
 
 
-    $modeloClub = new club();
-    
+    return view('addTeam', compact('clubs'));
+  }
+
+
+  public function saveTeam(Request $request)
+  {
+
+    $request->validate([
+      'nombre' => 'required|min:3|max:50',
+
+    ]);
+
+    $equipo = new Equipo();
+
+    $equipo->nombre = $request->nombre;
+    $equipo->entrenador = $request->entrenador;
+    $equipo->division = $request->division;
+    $equipo->estadio = $request->estadio;
+    $equipo->club_id = $request->club;
+
+    $equipo->save();
+
+    return redirect()->action([TeamController::class, 'indexTeam']);
+  }
+
+  public function showTeam(Equipo $equipo)
+  {
+
+    $modeloClub = new Club();
+
+    $clubs = $modeloClub->getAllClubs();
+
+    return view('showTeam', compact('equipo', 'clubs'));
+  }
+
+  public function editTeam(Equipo $equipo)
+  {
+
+
+    $modeloClub = new Club();
+
     $clubs = $modeloClub->getAllClubs();
 
     return view('editTeam', compact('equipo', 'clubs'));
-}
+  }
 
-    public function updateTeam(Request $request, equipo $equipo) {
+  public function updateTeam(Request $request, Equipo $equipo)
+  {
 
-      $request->validate([
-        'nombre' => 'required|min:3|max:50',
-    
-      ]);  
+    $request->validate([
+      'nombre' => 'required|min:3|max:50',
+
+    ]);
 
 
     $equipo->nombre = $request->nombre;
@@ -91,15 +93,12 @@ class TeamController extends Controller
     $equipo->save();
 
     return redirect()->action([TeamController::class, 'indexTeam']);
+  }
 
-}
+  public function destroyTeam(Equipo $equipo)
+  {
 
- public function destroyTeam(equipo $equipo) {
-
-  $equipo->delete();
-  return redirect()->action([TeamController::class, 'indexTeam']);
-
-}
-
-
+    $equipo->delete();
+    return redirect()->action([TeamController::class, 'indexTeam']);
+  }
 }
