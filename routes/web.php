@@ -7,6 +7,7 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\MatchController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\StatsController;
+use Illuminate\Support\Facades\URL;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +18,10 @@ use App\Http\Controllers\StatsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+if (app()->environment('production')) {
+    URL::forceScheme('https');
+}
 
 // Index
 
