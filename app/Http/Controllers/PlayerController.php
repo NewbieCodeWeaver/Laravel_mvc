@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Jugador;
-use App\Models\equipo;
+use App\Models\Equipo;
 
 class PlayerController extends Controller
 {
@@ -13,7 +13,7 @@ class PlayerController extends Controller
 
         $jugadores = Jugador::paginate(10);
 
-        $modeloEquipo = new equipo();
+        $modeloEquipo = new Equipo();
 
         $equipos = $modeloEquipo->getAllTeams();
 
@@ -22,7 +22,7 @@ class PlayerController extends Controller
     public function addPlayer()
     {
 
-        $modeloEquipo = new equipo();
+        $modeloEquipo = new Equipo();
 
         $equipos = $modeloEquipo->getAllTeams();
 
@@ -74,7 +74,7 @@ class PlayerController extends Controller
     public function showPlayer(Jugador $jugador)
     {
 
-        $modeloEquipo = new equipo();
+        $modeloEquipo = new Equipo();
 
         $equipos = $modeloEquipo->getAllTeams();
 
@@ -83,7 +83,7 @@ class PlayerController extends Controller
 
     public function editPlayer(Jugador $jugador)
     {
-        $modeloEquipo = new equipo();
+        $modeloEquipo = new Equipo();
 
         $equipos = $modeloEquipo->getAllTeams();
 
