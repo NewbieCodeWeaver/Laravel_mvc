@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Club;
-use App\Models\Equipo;
 use App\Models\Jugador;
 use App\Models\Partido;
 use Carbon\Carbon;

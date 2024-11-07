@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Partido;
 use App\Models\Equipo;
+use App\Models\Partido;
 use Carbon\Carbon;
 
 class MatchController extends Controller
