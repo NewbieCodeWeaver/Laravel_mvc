@@ -57,7 +57,6 @@ class Partido extends Model
 
     public function getPendingMatches()
     {
-
         $currentDate = Carbon::now()->format('d-m-y');
         $currentTime = Carbon::now()->format('H:i:s');
 
@@ -68,7 +67,7 @@ class Partido extends Model
                 $query->whereRaw("STR_TO_DATE(fecha, '%d-%m-%y') > STR_TO_DATE(?, '%d-%m-%y')", [$currentDate])
                     ->orWhere(function ($query) use ($currentDate, $currentTime) {
                         $query->whereRaw("STR_TO_DATE(fecha, '%d-%m-%y') = STR_TO_DATE(?, '%d-%m-%y')", [$currentDate])
-                            ->whereRaw("STR_TO_DATE(hora, '%H:%i') > STR_TO_DATE(?, '%H:%i')", [$currentTime]);
+                            ->whereRaw("STR_TO_DATE(hora, '%H:%i:%s') > STR_TO_DATE(?, '%H:%i:%s')", [$currentTime]);
                     });
             });
 
